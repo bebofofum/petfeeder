@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedings
   resources :pets
   devise_for :users
 
