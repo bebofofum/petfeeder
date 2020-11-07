@@ -3,7 +3,9 @@ class Pet < ApplicationRecord
   has_many :users, through: :feedings
 
   #validations
-  validates :name, :type, presence: true
+  validates :name, :type, :feeding_details, presence: true
+  validates :name, length: { minimum: 2 }
+  validates :name, uniqueness: true
 
 
   def index
