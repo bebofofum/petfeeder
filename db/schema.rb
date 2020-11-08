@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_203844) do
+ActiveRecord::Schema.define(version: 2020_11_07_225826) do
 
   create_table "feedings", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_11_07_203844) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.string "feeding_details"
+    t.string "species"
+    t.string "diet_requirements"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "special_needs"
