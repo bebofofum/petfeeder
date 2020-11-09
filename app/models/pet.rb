@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  has_many :feedings
+  has_many :feedings, dependent: :destroy
   has_many :users, through: :feedings
 
   #validations
