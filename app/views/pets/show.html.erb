@@ -1,1 +1,7 @@
 <h1><%= @pet.name %></h1>
+<h3><%= @pet.species %></h3>
+<h3><%= @pet.diet_requirements %></h3>
+<button><%= link_to "Edit Pet", edit_pet_path(@pet) %></button>
+<%= form_tag(pet_path(@pet), method: :delete, style: 'display: inline-block;') do %>
+  <%= submit_tag "Delete Pet" %>
+<% end %>
