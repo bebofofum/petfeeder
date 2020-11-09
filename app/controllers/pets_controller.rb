@@ -30,16 +30,24 @@ class PetsController < ApplicationController
   end
 
   def update
+    if @pet.update(pet_params)
+      redirect_to pet_path(@pet)
+    else
+      render :edit
+    end
+
   end
 
   def destroy
+    @pet.destroy
+    redirect_to pets_path
   end
   
 
   private
 
   def pet_params
-    params.require(:pet).permit(:name)
+    params.require(:pet).permit(:name, :species, :special_needs, :diet_requirements)
   end
 
   def set_pet
