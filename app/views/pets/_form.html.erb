@@ -1,0 +1,15 @@
+<%= show_errors_for(pet) %>
+<%= form_for pet do |f| %>
+  <p>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br>
+  <%= f.label :species %>:
+  <%= f.text_field :species %><br>
+  <%= f.label :special_needs, "Special Needs" %>:
+  <%= f.check_box :special_needs %><br>
+  <%= f.label :diet_requirements, "Dietary Requirements" %>:
+  <%= f.text_field :diet_requirements %><br>
+  </p>
+
+  <%= f.submit %>
+    <% end %>
