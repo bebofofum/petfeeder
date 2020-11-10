@@ -8,7 +8,8 @@ class PetsController < ApplicationController
   end
 
   def show
-  
+    @feeding = Feeding.new
+
   end
 
   def new
