@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :feedings
-  resources :pets
+  resources :pets 
   devise_for :users
 
   root 'pets#index'
