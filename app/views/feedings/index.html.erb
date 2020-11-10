@@ -1,3 +1,12 @@
-<h1>Pets List</h1>
+<h1>Feedings</h1>
+<% @feedings.each do |feeding| %>
+  <ul>
+    <li><%= link_to feeding.pet_name, pet_path(feeding.pet) %></li>
+    <li><%= feeding.description %></li>
+  </ul>
+<% end %>
+<p><button><%= link_to "Add Feeding", new_feeding_path %></button>
+</p>
+
 
 
