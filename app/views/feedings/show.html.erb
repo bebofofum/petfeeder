@@ -1,0 +1,12 @@
+<h1>Feeding Details</h1>
+<p>Pet: <%= link_to @feeding.pet_name, pet_path(@feeding.pet) %></p>
+<p>Feeder: <%= @feeding.user_name_normalize %></p>
+<p>When Fed: <%= @feeding.category %></p>
+<p>Description:<br />
+<%= @feeding.description %></p>
+<button><%= link_to "Edit Feeding", edit_feeding_path(@feeding) %></button>
+<%= form_tag(feeding_path(@feeding), method: :delete, style: 'display: inline-block;') do %>
+  <%= submit_tag "Delete Feeding" %>
+<% end %>
+
+
