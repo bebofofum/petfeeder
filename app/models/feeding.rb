@@ -15,5 +15,20 @@ class Feeding < ApplicationRecord
     pet.name
   end
 
+  def self.by_species(species_kind)
+    self.includes(:pet).where(pets: { species: species_kind })
+  end
+
+  def self.fed
+    self.where(completed: :true)
+
+  end
+
+
+
+  
+
+  
+
 
 end
