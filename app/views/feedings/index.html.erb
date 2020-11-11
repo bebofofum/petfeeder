@@ -1,11 +1,31 @@
 <h1>Feedings</h1>
+<%= form_tag(feedings_path, method: 'get') do %>
+  <p><label for="filter_by_species">Filter by Species</label><br />
+  <select name="filter_by_species">
+    <option <%= 'selected' if params[:filter_by_species] == '' %> value="">Show All</option>
+    <option <%= 'selected' if params[:filter_by_species] == 'bearded_dragon' %> value="bearded_dragon">Bearded Dragon</option>
+    <option <%= 'selected' if params[:filter_by_species] == 'axolotl' %> value="axolotl">Axolotl</option>
+    <option <%= 'selected' if params[:filter_by_species] == 'gecko' %> value="gecko">Gecko</option>
+    <option <%= 'selected' if params[:filter_by_species] == 'cat' %> value="cat">Cat</option>
+    <option <%= 'selected' if params[:filter_by_species] == 'rabbit' %> value="rabbit">Rabbit</option>
+
+  </select></p>
+  <p><label for="filter_by_been_fed">Feeding Completed</label><br />
+  <select name="filter_by_been_fed">
+    <option <%= 'selected' if params[:filter_by_been_fed] == '' %> value="">Show All</option>
+    <option <%= 'selected' if params[:filter_by_been_fed] == 'completed' %> value="completed">Already Fed</option>
+  </select></p>
+  <%= submit_tag 'Filter Listing' %>
+
+<% end %>
 <% @feedings.each do |feeding| %>
+  <h3><%= link_to feeding.pet_name, pet_path(feeding.pet) %></h3>
   <ul>
-    <li><%= link_to feeding.pet_name, pet_path(feeding.pet) %></li>
     <li><%= feeding.description %></li>
   </ul>
+  <p><button><%= link_to "Add #{feeding.pet_name} Feeding", new_pet_feeding_path(feeding) %></button>
+
 <% end %>
-<p><button><%= link_to "Add Feeding", new_feeding_path %></button>
 </p>
 
 
