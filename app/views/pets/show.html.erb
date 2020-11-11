@@ -1,37 +1,24 @@
+<h1>Pet Details</h1>
+<%= show_errors_for(@feeding) %>
+
 <h1><%= @pet.name %></h1>
 <h3><%= @pet.species %></h3>
-<h3><%= @pet.diet_requirements %></h3>
+<h3><%= @pet.diet_requirements %></h3><br />
+
+<button><%= link_to "#{@pet.name}'s Feedings", pet_feedings_path(@pet) %></button>
+<button><%= link_to "New Feeding for #{@pet.name}", new_pet_feeding_path(@pet) %></button>
+
 
 <button><%= link_to "Edit Pet", edit_pet_path(@pet) %></button>
 <%= form_tag(pet_path(@pet), method: :delete, style: 'display: inline-block;') do %>
   <%= submit_tag "Delete Pet" %>
-<% end %>
+<% end %><br />
+
 
  <h3>Feedings:</h3>
   <ul>
   <% @pet.feedings.each do |feeding| %>
-    <li><%= link_to feeding.description, feeding_path(feeding)  %> in the <%= feeding.category %></li>
+    <li><%= link_to feeding.description, pet_feeding_path(@pet, feeding)  %> in the <%= feeding.category %></li>
   <% end %>
   </ul>
 
-<h2>New Feeding</h2>
-<%= form_for @feeding do |f| %>
-    <%= f.hidden_field :pet_id, :value => @pet.id %>
-    <div>
-      <%= f.label :category %>:<br />
-      <%= f.text_field :category %><br />
-    </div>
-    <div>
-      <%= f.label :description %>:<br />
-      <%= f.text_area :description %><br />
-    </div>
-    <div>
-      <%= f.label :completed, "Completed" %>:
-      <%= f.check_box :completed %><br />
-    </div>
-    <div>
-      <%= f.label :user_id, "User" %>
-      <%= f.collection_select :user_id, User.all, :id, :name, prompt: 'Select User' %>
-    </div>
-    <%= f.submit %>
-<% end %>
