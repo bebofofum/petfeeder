@@ -5,20 +5,41 @@ class FeedingsController < ApplicationController
 
 
   def index
-    @feedings = Feeding.all
+    if params[:pet_id]
+      @feedings = Pet.find_by_id(params[:pet_id]).feedings
+    else
+      @feedings = Feeding.all
+    end
+    if params[:filter_by_species]
+      species = params[:filter_by_species].split('_').map(&:capitalize).join(' ')
+      filter_options(species)
+    end
+    # filter_options_complete
+    
   end
 
   def show
+    # if params[:pet_id]
+    #   @feeding = Pet.find(params[:pet_id]).feedings
+    # end
+
   end
 
   def new
-    @feeding = Feeding.new
+    @pet = Pet.find_by_id(params[:pet_id])
+    if @pet
+      @feeding = @pet.feedings.build
+    else
+      @feeding = Feeding.new
+    end
+    
   end
 
   def create
     @feeding = Feeding.new(feeding_params)
+    @pet = @feeding.pet
     if @feeding.save
-      redirect_to pet_path(@feeding.pet)
+      redirect_to pet_path(@pet)
     else
       render 'pets/show'
       # render :new
@@ -48,8 +69,29 @@ class FeedingsController < ApplicationController
     params.require(:feeding).permit(:user_id, :pet_id, :completed, :description, :category)
   end
 
+  def clean_filter_species
+      params[:filter_by_species].split('_').map(&:capitalize).join(' ')
+  end
+
+  def filter_options(arg)
+    if params[:filter_by_species] != ''
+      @feedings = @feedings.by_species(arg)
+    end
+    if params[:filter_by_been_fed] == "completed"
+      @feedings = @feedings.fed
+    end
+
+  end
+
+  # def filter_options_complete
+  #   if params[:filter_by_been_fed] == "completed"
+  #     @feedings = @feedings.fed
+  #   end
+  # end
+
   def set_feeding
     @feeding = Feeding.find(params[:id])
   end
+
 
 end
