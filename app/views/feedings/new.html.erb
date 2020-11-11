@@ -2,7 +2,14 @@
 
 <%= form_for @feeding do |f| %>
   <p>
-  Pet to Feed: <%= f.collection_select :pet_id, Pet.all, :id, :name %>
+  <% if @feeding.pet_id %>
+    <%= f.label :pet_id, "Pet: " %>
+    <%= f.hidden_field :pet_id %>
+    <%= @feeding.pet.name %>
+  <% else %>
+      <%= f.label :pet_id, "Pet: " %>
+      <%= f.collection_select :pet_id, Pet.all, :id, :name %>
+  <% end %>
   </p>
   <p>
   Feeder: <%= f.collection_select :user_id, User.all, :id, :name %>
