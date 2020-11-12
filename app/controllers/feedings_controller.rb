@@ -40,8 +40,8 @@ class FeedingsController < ApplicationController
     if @feeding.save
       redirect_to pet_path(@pet)
     else
-      render 'pets/show'
-      # render :new
+      # render 'pets/show'
+      render :new
     end
   end
 
