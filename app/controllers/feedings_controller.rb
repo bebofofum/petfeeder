@@ -14,7 +14,6 @@ class FeedingsController < ApplicationController
       species = params[:filter_by_species].split('_').map(&:capitalize).join(' ')
       filter_options(species)
     end
-    # filter_options_complete
     
   end
 
@@ -70,7 +69,7 @@ class FeedingsController < ApplicationController
   end
 
   def clean_filter_species
-      params[:filter_by_species].split('_').map(&:capitalize).join(' ')
+    species = params[:filter_by_species].split('_').map(&:capitalize).join(' ')
   end
 
   def filter_options(arg)
@@ -82,12 +81,6 @@ class FeedingsController < ApplicationController
     end
 
   end
-
-  # def filter_options_complete
-  #   if params[:filter_by_been_fed] == "completed"
-  #     @feedings = @feedings.fed
-  #   end
-  # end
 
   def set_feeding
     @feeding = Feeding.find(params[:id])
