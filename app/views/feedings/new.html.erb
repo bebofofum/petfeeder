@@ -1,27 +1,3 @@
 <h1>New Feeding</h1>
 
-<%= form_for @feeding do |f| %>
-  <p>
-  <% if @feeding.pet_id %>
-    <%= f.label :pet_id, "Pet: " %>
-    <%= f.hidden_field :pet_id %>
-    <%= @feeding.pet.name %>
-  <% else %>
-      <%= f.label :pet_id, "Pet: " %>
-      <%= f.collection_select :pet_id, Pet.all, :id, :name %>
-  <% end %>
-  </p>
-  <p>
-  Feeder: <%= f.collection_select :user_id, User.all, :id, :name %>
-  </p>
-  <p>
-  <%= f.label :category %>:
-  <%= f.text_field :category %><br>
-  <%= f.label :description %>:
-  <%= f.text_field :description %><br>
-  <%= f.label :completed, "Completed" %>:
-  <%= f.check_box :completed %><br>
-  </p>
-
-  <%= f.submit %>
-    <% end %>
+<%= render partial: 'form', locals: { feeding: @feeding } %>
