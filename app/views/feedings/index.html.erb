@@ -21,7 +21,7 @@
 <% @feedings.each do |feeding| %>
   <h3><%= link_to feeding.pet_name, pet_path(feeding.pet) %></h3>
   <ul>
-    <li><%= feeding.description %></li>
+    <li><%= link_to feeding.description, feeding_path(feeding) %></li>
   </ul>
   <p><button><%= link_to "Add #{feeding.pet_name} Feeding", new_pet_feeding_path(feeding) %></button>
 
