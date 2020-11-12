@@ -8,9 +8,9 @@ class Pet < ApplicationRecord
   validates :name, uniqueness: true
 
   #scope method
-  def self.special_diet?
-    where(special_needs: :true)
-  end
+  # def self.special_diet?
+  #   where(special_needs: :true)
+  # end
 
   # def self.by_species(species_kind)
   #   where(species: species_kind)
