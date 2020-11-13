@@ -1,0 +1,6 @@
+  <nav>
+    <button><%= link_to "Edit #{object.class.name} ", edit_feeding_path(object) %></button>
+    <%= form_tag(feeding_path(@feeding), method: :delete, style: 'display: inline-block;') do %>
+    <%= submit_tag "Delete #{object.class.name}" %>
+  </nav>
+
