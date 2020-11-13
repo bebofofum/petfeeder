@@ -15,7 +15,7 @@
     <option <%= 'selected' if params[:filter_by_been_fed] == '' %> value="">Show All</option>
     <option <%= 'selected' if params[:filter_by_been_fed] == 'completed' %> value="completed">Already Fed</option>
   </select></p>
-  <%= submit_tag 'Filter Listing' %>
+  <%= submit_tag 'Filter Listing', class: 'submit_btn_nice' %>
 
 <% end %>
 <% @feedings.each do |feeding| %>
