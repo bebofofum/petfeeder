@@ -68,6 +68,11 @@ class FeedingsController < ApplicationController
     params.require(:feeding).permit(:user_id, :pet_id, :completed, :description, :category)
   end
 
+  def set_feeding
+    @feeding = Feeding.find(params[:id])
+  end
+
+
   def clean_filter_species
     species = params[:filter_by_species].split('_').map(&:capitalize).join(' ')
   end
@@ -79,12 +84,8 @@ class FeedingsController < ApplicationController
     if params[:filter_by_been_fed] == "completed"
       @feedings = @feedings.fed
     end
-
   end
 
-  def set_feeding
-    @feeding = Feeding.find(params[:id])
-  end
 
 
 end
