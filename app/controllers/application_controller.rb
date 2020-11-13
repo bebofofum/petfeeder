@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
     redirect_to pets_path
   end
 
-  def current_pet
-    # @pet ||= Pet.find(params[:id])
-    Pet.find(params[:id])
-  end
+  # def current_pet
+  #   # @pet ||= Pet.find(params[:id])
+  #   Pet.find(params[:id])
+  # end
 
 
 
