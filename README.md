@@ -11,8 +11,11 @@ A pet feeder app to keep track of pet feeders within a family. When you have man
 2. In terminal, shift to the app directory. Type cd 'petfeeder'
 3. Run 'bundle install' to ensure all dependencies are installed. 
 4. Run 'rake db:migrate' in Terminal to run migrations for creating the User, Pet, and Feeding database tables.
-5. In terminal start the rails server by typing 'rails s'.
-8. In your browser open a new window and enter 'localhost:' followed by the server address shown by the rails server, the last 4 digits after the colon. (For example 'Listening on 127.0.0.1:3000' would use 3000, as in localhost:3000)
+5. Get your Google Oauth credential ID and secret# (link provided below). You will need to make your own google oauth credentials. Once created copy the output and paste them into the resective labels in the .env file after each '='
+https://support.google.com/cloud/answer/6158849?hl=en
+
+6. In terminal start the rails server by typing 'rails s'.
+7. In your browser open a new window and enter 'localhost:' followed by the server address shown by the rails server, the last 4 digits after the colon. (For example 'Listening on 127.0.0.1:3000' would use 3000, as in localhost:3000)
 
 
 ## Project Contributors: ##
@@ -39,13 +42,13 @@ Specs:
 [X] Include login (how e.g. Devise) --> [Provided through Devise]
 [X] Include logout (how e.g. Devise) --> [Provided through Devise]
 [X] Include third party signup/login (how e.g. Devise/OmniAuth) --> [Sign up through GoogleOauth2]
-[X] Include nested resource show or index (URL e.g. users/2/recipes)
-[X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-[ ] Include form display of validation errors (form URL e.g. /recipes/new)
+[X] Include nested resource show or index (URL e.g. users/2/recipes) --> [Uses pet/:id/feeding/:id], and [Uses pet/:id/feeding]
+[X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) --> [Uses pet/:id/feeding/new]
+[X] Include form display of validation errors (form URL e.g. /recipes/new) --> [Shows a list of errors with validation failing. Inside fields_for_errors class]
 
 Confirm:
 
-[ ] The application is pretty DRY
+[X] The application is pretty DRY 
 [ ] Limited logic in controllers
 [X] Views use helper methods if appropriate
 [X] Views use partials if appropriate
