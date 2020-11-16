@@ -7,7 +7,9 @@ class Pet < ApplicationRecord
   validates :name, length: { minimum: 2 }
   validates :name, uniqueness: true
 
+
   #scope method
+
   # def self.special_diet?
   #   where(special_needs: :true)
   # end
