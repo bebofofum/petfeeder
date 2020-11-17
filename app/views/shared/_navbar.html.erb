@@ -1,8 +1,9 @@
   <nav>
-    <button><%= link_to "Pets", pets_path %></button>
-    <button><%= link_to "Feedings", feedings_path %></button>
 
     <% if user_signed_in? %>
+      <button><%= link_to "Pets", pets_path %></button>
+      <button><%= link_to "Feedings", feedings_path %></button>
+
       <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
         <%= submit_tag 'Sign Out', class: 'submit_btn_right' %>
       <% end %>
